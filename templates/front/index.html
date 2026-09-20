@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>Student Management System</title>
+    <link rel="icon" type="image/x-icon" href="/static/assets/images/pic/title_logo.png">
+    <link rel="stylesheet" href="/static/assets/myCSS/index.css" type="text/css" />
+    <link rel="stylesheet" href="/static/assets/myCSS/home.css" type="text/css" />
+    <link rel="stylesheet" href="/static/assets/myCSS/about_us.css" type="text/css" />
+    <link rel="stylesheet" href="/static/assets/myCSS/contact_us.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <!--  News Section  -->
+        <div class="width-100 news-header">
+            <div class="container">
+                <div class="width-100">
+                    <b class="news-list">&nbsp;News:&nbsp;</b>
+                    <marquee class="headquote">The beautiful thing about learning is that no one can take it away from you.</marquee>
+                </div>
+            </div>
+        </div>
+    <!--  Header Menu  -->
+    <div class="width-100 header-menu">
+        <div class="container">
+            <div class="logo"><img src="/static/assets/images/pic/logo.png" style="width:200px"></div>
+            <ul class="main-menu">
+                <li><a href="/home"><b>Home</b></a></li>
+                <li><a href="/about_us"><b>About Us</b></a></li>
+                <li><a href="/contact_us"><b>Contact Us</b></a></li>
+                <li><a href="/student_verify"><b>Student Verify</b></a></li>
+                 <li><a href="/view_result"><b>View Result</b></a></li>
+                <li><a href="/admin_login"><b>Admin</b></a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    {% block content %}
+
+    {% endblock %}
+
+
+    <!--  Footer  -->
+    <div class="width-100 margin-top-0 footer">
+        <div class="container">
+            <div class="width-33">
+                <h2 class="quicklink-heading">Quick Links</h2>
+                <ul class="quicklink-menu">
+                    <li><a href="/home">> Home</a></li>
+                    <li><a href="/about_us">> About Us</a></li>
+                    <li><a href="/contact_us">> Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="width-33">
+                <h2 class="quicklink-heading">Student Section</h2>
+                <ul class="quicklink-menu">
+                    <li><a href="/student_verify">> Student Verify</a></li>
+                    <li><a href="/view_result">> View Result</a></li>
+                </ul>
+            </div>
+            <div class="width-33">
+                <h2 class="quicklink-heading">GET IN TOUCH</h2>
+                <ul class="get-in-touch">
+                    <li><i class="fa fa-envelope-o"></i> EMAIL-ID : <a href="#" class="footer-e-mail">abc123@gmail.com</a></li>
+                    <li><i class="fa fa-headphones"></i> WHATSAPP : +91 123 456 0789</li>
+                    <li><i class="fa fa-fax"></i> CONTACT NO : +91 98765 48321</li>
+                    <li><i class="fa fa-globe"></i> WEBSITE : <a href="#" class="footer-website">https://www.abc.com</a></li>
+                </ul>
+                <ul class="social-media">
+                    <li><a href="#"><img src="/static/assets/images/pic/icon-fb.png"></a></li>
+                    <li><a href="#"><img src="/static/assets/images/pic/icon-twitter.png"></a></li>
+                    <li><a href="#"><img src="/static/assets/images/pic/icon-linkedin.png"></a></li>
+                    <li><a href="#"><img src="/static/assets/images/pic/icon-instagram.png"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--  Footer Section  -->
+    <div class="width-100 footer2-section">
+        <p class="footer2-content">Copyright @2025 Developed By: <b>Piyush Kumar BCA-2022-25</b> All Rights Reserved.</p>
+    </div>
+
+
+</body>
+</html>

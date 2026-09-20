@@ -1,0 +1,75 @@
+{% extends 'front/index.html' %}
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div class="width-100 contact-us">
+    <div class="contact-us-content" >
+        <h1>Connect with Us</h1>
+        <p>We would love to respond to your queries and help you succeed. Feel free to get in touch with us.</p>
+        <div class="contact-box">
+            <div class="contact-left">
+
+                {% if messages %}
+
+                    {% for message in messages%}
+
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: green; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                            {{message}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true" >&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+
+                        {% if message.tags == 'error' %}
+                        <div  class="alert alert-warning alert-dismissible fade show" role="alert" style="width: 100%; padding: 8px; text-align: center; background-color: red; color: white; border-radius: 5px; margin-bottom: 15px">
+                            {{message}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+                                <span aria-hidden="true" >&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+                <h3>Send Your Request</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Name:<span style="color: red">*</span></label>
+                            <input type="text" name="name" placeholder="Abc Pqr" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Phone No:<span style="color: red">*</span> </label>
+                            <input type="number" name="phone_no" placeholder="+91 987 654 0123" required>
+                        </div>
+                    </div>
+                     <div class="input-row">
+                        <div class="input-group">
+                            <label>Email Id:<span style="color: red">*</span> </label>
+                            <input type="email" name="email_id" placeholder="abcpqr123@gmail.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Course:<span style="color: red">*</span> </label>
+                             <select name="course_id" required >
+                                <option disabled selected>Select Course</option>
+                                {% for c in course %}
+                                <option value="{{c.id}}">{{c.course_code}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <label>Message: </label>
+                    <textarea rows="5" name="message" placeholder="Your Message"></textarea>
+                    <div class="button-send">
+                        <button type="submit" >Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}

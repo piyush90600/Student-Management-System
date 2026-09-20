@@ -1,0 +1,160 @@
+{% extends 'adminPanel/layout.html' %}
+{% block title %}Update Student Data{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box" style="padding: 20px 30px;">
+             <div class="col-12">
+                <div class="card-box">
+
+                    <div class="row">
+                        <div class="col-lg-12"></div>
+                        <div class="col-lg-12">
+
+                            {% if messages %}
+
+                                {% for message in messages%}
+
+                                    {% if message.tags == 'success' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: green; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                    {% if message.tags == 'error' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: red; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                {% endfor %}
+                            {% endif %}
+
+
+
+                            <h4 class="header-title">Update Student Data</h4>
+                            <div class="p-4">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Roll No<span class="text-danger">*</span></label>
+                                                <input type="text" name="roll_no" value="{{ data.roll_no}}" required placeholder="Roll no" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Name<span class="text-danger">*</span></label>
+                                                <input type="text" name="student_name" value="{{ data.student_name}}" required placeholder="Name" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Father's Name<span class="text-danger">*</span></label>
+                                                <input type="text" name="fathers_name" value="{{ data.fathers_name}}" required placeholder="Father's name" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Mother's Name<span class="text-danger">*</span></label>
+                                                <input type="text" name="mothers_name" value="{{ data.mothers_name}}" required placeholder="Mother's name" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>DOB<span class="text-danger">*</span></label>
+                                                <input type="date" name="dob" value="{{data.dob}}" required class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Gender<span class="text-danger">*</span></label>
+                                                <select class="form-control" name="gender"  required >
+                                                    <option value="" disabled selected>Select</option>
+                                                    <option value="Male" >Male</option>
+                                                    <option value="Female" >Female</option>
+                                                    <option value="Neutral" >Neutral</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Mob No<span class="text-danger">*</span></label>
+                                                <input type="number" name="mob_no" value="{{ data.mob_no}}" required placeholder="Mobile number" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Email ID</label>
+                                                <input type="email" name="email_id" value="{{data.email_id}}"  placeholder="Email Id" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Address<span class="text-danger">*</span></label>
+                                                <textarea class="form-control" name="address">{{ data.address}}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Admission Date<span class="text-danger">*</span></label>
+                                                <input type="date" name="admission_date"  value="{{data.admission_date}}" required class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Photo<span class="text-danger">*</span></label>
+                                                <input type="file" name="photo" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Course Name<span class="text-danger">*</span></label>
+                                                <select class="form-control" name="course_id" required>
+                                                    <option value="" disabled selected>Select</option>
+                                                    {% for c in course %}
+                                                    <option value="{{c.id}}" >{{c.course_code}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Session</label>
+                                                <input type="text" name="session" value="{{ data.session}}" required placeholder="session" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Fee<span class="text-danger">*</span></label>
+                                                <input type="number"  name="fee" value="{{ data.fee}}" required placeholder="fee" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group text-right mb-0">
+                                        <a href="/adminPanel/studentList" class="btn btn-danger">Back</a>
+                                        <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                            Submit
+                                        </button>
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

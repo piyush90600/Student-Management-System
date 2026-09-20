@@ -1,0 +1,80 @@
+{% extends 'adminPanel/layout.html' %}
+{% block title %}Update Course{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box" style="padding: 20px 30px;">
+             <div class="col-12">
+                <div class="card-box">
+
+                    <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+
+                            {% if messages %}
+
+                                {% for message in messages%}
+
+                                    {% if message.tags == 'success' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: green; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                    {% if message.tags == 'error' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: red; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            {% endif %}
+
+                            <h4 class="header-title">Update Course</h4>
+                            <div class="p-4">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label>Course Code<span class="text-danger">*</span></label>
+                                        <input type="text" name="course_code" value="{{ data.course_code}}" parsley-trigger="change" required placeholder="Enter course code" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Course Name<span class="text-danger">*</span></label>
+                                        <input type="text" name="course_name" value="{{ data.course_name}}" parsley-trigger="change" required placeholder="Enter course name" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pass1">Duration<span class="text-danger">*</span></label>
+                                        <input id="pass1" type="text" value="{{ data.duration}}" placeholder="Course duration" required class="form-control" name="duration">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea  class="form-control" name="description">{{ data.description}}
+                                        </textarea>
+                                    </div>
+
+                                    <div class="form-group text-right mb-0">
+                                        <a href="/adminPanel/courseList" class="btn btn-danger">Back</a>
+                                        <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                            Submit
+                                        </button>
+
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

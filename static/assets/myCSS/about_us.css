@@ -1,0 +1,38 @@
+.about-us{
+    font-family: arial;
+    height: 725px;
+    background: burlywood;
+    font-size: 14px;
+}
+
+.about-us-content{
+    width: 90%;
+    margin: 55px auto;
+}
+
+.about-us-box{
+    background: white;
+    display: flex;
+}
+
+.about-us-section{
+    flex-basis: 100%;
+    padding: 40px 0px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.about-us-section h4{
+    font-weight: bold;
+    font-size: 3em;
+    padding-bottom: 40px;
+    font-family: Courgette, sans-serif;
+    text-align: center;
+}
+
+.about-us-section p{
+    font-size: 1.1rem;
+    line-height: 27px !important;
+    padding-bottom: 10px;
+    text-align: justify;
+}

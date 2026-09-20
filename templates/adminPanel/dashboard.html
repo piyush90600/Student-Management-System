@@ -1,0 +1,55 @@
+{% extends 'adminPanel/layout.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+      <div>
+        <h3 class="fw-bold mb-3">Dashboard</h3>
+      </div>
+</div>
+
+
+<div class="row">
+      <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-icon" style="padding-left: 15px;">
+                            <div class="icon-big text-center icon-primary bubble-shadow-small">
+                            <i class="fa fa-book"></i>
+                            </div>
+                        </div>
+                        <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers" style=" padding-left: 25px;">
+                            <p class="card-category">Total Course</p>
+                            <h4 class="card-title">{{total_course}}</h4>
+                        </div>
+                            <a href="courseList/" class="small-box-footer" style="font-size: 14px">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-icon" style=" padding-left: 15px;">
+                            <div class="icon-big text-center icon-primary bubble-shadow-small">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="col col-stats ms-3 ms-sm-0">
+                            <div class="numbers" style=" padding-left: 15px;">
+                                <p class="card-category" >Total Student</p>
+                                <h4 class="card-title">{{total_students}}</h4>
+                            </div>
+                            <a href="studentList/" class="small-box-footer"  style="font-size: 14px">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+</div>
+{% endblock %}

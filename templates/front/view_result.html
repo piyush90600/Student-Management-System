@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- ===== CSS ===== -->
+         <link rel="stylesheet" href="/static/assets/myCSS/view_result.css">
+
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Result</title>
+    </head>
+    <body>
+        <div class="width-100 view_result">
+            <div class="view_result-content" >
+                <div class="view_result-box">
+                    <div class="content-left">
+                        <img  src="/static/assets/images/pic/result_back.png">
+                    </div>
+                    <div class="content-right">
+
+                        <form method="post" class="form__content">
+                            {% csrf_token %}
+
+                            {% if messages %}
+
+                                {% for message in messages%}
+
+                                    {% if message.tags == 'success' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: green; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                    {% if message.tags == 'error' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: red; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            {% endif %}
+
+                            <h1 class="form__title">Result</h1>
+
+                            <div class="form__div form__div-one">
+                                <div class="form__icon">
+                                    <i class='bx bx-envelope'></i>
+                                </div>
+
+                                <div class="form__div-input">
+                                    <input type="text"  placeholder="Roll Number" name="roll_no" class="form__input" required>
+                                </div>
+                            </div>
+
+                            <button class="form__button" type="submit" name="button">SUBMIT</button>
+                            <a class="form__link" href="/home">Back To Home</a>
+                        </form>
+                        {% if data %}
+                            <h2 style="font-size: 25px;">Result:</h2>
+                            <p><strong>Roll Number:</strong>&ensp;{{ data.0.roll_no }}</p>
+                            <p><strong>Name:</strong>&ensp;{{ data.0.student_name }}</p>
+                            <p><strong>Course:</strong>&ensp;{{ course.0.course_code }}</p>
+                            <p><strong>Assignment Marks:</strong>&ensp;{{ result.0.assignment_marks }}</p>
+                            <p><strong>Theory Marks:</strong>&ensp;{{ result.0.theory_marks }}</p>
+                            <p><strong>Practical Marks:</strong>&ensp;{{ result.0.practical_marks }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

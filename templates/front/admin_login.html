@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- ===== CSS ===== -->
+         <link href="/static/assets/myCSS/admin_login.css" rel="stylesheet" type="text/css" />
+
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Admin Login</title>
+    </head>
+    <body>
+        <div class="width-100 admin-login">
+        <div class="admin-login-content" >
+            <div class="admin-login-box">
+                <div class="contact-left">
+                    <img  src="/static/assets/images/pic/login_back.png">
+                </div>
+                <div class="contact-right">
+
+                    <form method="post" class="form__content">
+                        {% csrf_token %}
+                        {% if messages %}
+
+                            {% for message in messages%}
+
+                                {% if message.tags == 'success' %}
+                                <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: green; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                    {{message}}
+                                    <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                </div>
+                                {% endif %}
+
+                                {% if message.tags == 'error' %}
+                                <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: red; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                    {{message}}
+                                    <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                </div>
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+
+                        <h1 class="form__title">Admin Panel Login</h1>
+
+                        <div class="form__div form__div-one">
+                            <div class="form__icon">
+                                <i class='bx bx-user-circle'></i>
+                            </div>
+
+                            <div class="form__div-input">
+                                <input type="text"  placeholder="username" name="username" class="form__input" required>
+                            </div>
+                        </div>
+
+                        <div class="form__div">
+                            <div class="form__icon">
+                                <i class='bx bx-lock' ></i>
+                            </div>
+
+                            <div class="form__div-input">
+                                <input type="password" placeholder="password" name="password" class="form__input" required>
+                            </div>
+                        </div>
+                        <button class="form__button" type="submit" name="button">LOGIN</button>
+                        <a class="form__link" href="/home">Back To Home</a>
+                </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

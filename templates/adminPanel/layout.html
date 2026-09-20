@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+    <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="/static/assets/libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/libs/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/libs/datatables/fixedHeader.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/libs/datatables/scroller.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/libs/datatables/dataTables.colVis.css" rel="stylesheet" type="text/css" />
+    <link href="/static/assets/libs/datatables/fixedColumns.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+
+
+        <div class="navbar-custom">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+
+
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <span class="d-none d-sm-inline-block ml-1"><i class="fa-solid fa-user"></i>&ensp;Admin</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome&ensp;!</h6>
+                        </div>
+
+                        <!-- item-->
+                        <a href="/adminPanel/change_password" class="dropdown-item notify-item">
+                            <i class="mdi mdi-settings-outline"></i>
+                            <span>Change Password</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="/user_logout" class="dropdown-item notify-item">
+                            <i class="mdi mdi-logout-variant"></i>
+                            <span>Logout</span>
+                        </a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            <!-- LOGO -->
+            <div class="logo-box" >
+                <a href="/adminPanel" class="logo text-center ">
+                    <span class="logo-lg">
+                        <h3 class="text-warning">Admin Panel</h3>
+                    </span>
+
+                </a>
+            </div>
+
+            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                <li>
+                    <button class="button-menu-mobile waves-effect">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- LEFT SIDE MENU -->
+        <div class="left-side-menu" >
+
+                <div class="slimscroll-menu">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <ul class="metismenu" id="side-menu">
+                            <li>
+                                <a href="/adminPanel" class="waves-effect waves-light">
+                                    <i class="mdi mdi-view-dashboard"></i><span>  Dashboard  </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/adminPanel/newCourse" class="waves-effect waves-light">
+                                    <i class="fa fa-book"></i><span>  New Course  </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/adminPanel/courseList" class="waves-effect waves-light">
+                                    <i class="fa fa-list"></i><span>  Course List  </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/adminPanel/newStudent/" class="waves-effect waves-light">
+                                    <i class="fa fa-user"></i><span>  New Student  </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/adminPanel/studentList/" class="waves-effect waves-light">
+                                    <i class="fa fa-list"></i><span>  Student List  </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/adminPanel/marksList/" class="waves-effect waves-light">
+                                    <i class="fa fa-list"></i><span>  Marks List  </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/adminPanel/fee/" class="waves-effect waves-light">
+                                    <i class="fa fa-list"></i><span>  Fee Details  </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+        </div>
+
+
+        <!-- CONTENT PAGE -->
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content-->
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+
+                                {% block content %}
+
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- start Footer -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 text-align-right">
+                            Developed By: Piyush Kumar <b>BCA-2022-25</b>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- end Footer -->
+
+        </div>
+    </div>
+
+    <script src="/static/assets/js/vendor.min.js"></script>
+
+    <!-- App js -->
+    <script src="/static/assets/js/app.min.js"></script>
+
+
+    <script src="/static/assets/libs/datatables/jquery.dataTables.min.js"></script>
+    <script src="/static/assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/static/assets/libs/datatables/dataTables.responsive.min.js"></script>
+    <script src="/static/assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="/static/assets/libs/datatables/dataTables.buttons.min.js"></script>
+    <script src="/static/assets/libs/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="/static/assets/libs/datatables/buttons.html5.min.js"></script>
+    <script src="/static/assets/libs/datatables/buttons.print.min.js"></script>
+    <script src="/static/assets/libs/datatables/dataTables.keyTable.min.js"></script>
+    <script src="/static/assets/libs/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="/static/assets/libs/datatables/dataTables.scroller.min.js"></script>
+    <script src="/static/assets/libs/datatables/dataTables.fixedColumns.min.js"></script>
+
+    <script src="/static/assets/libs/jszip/jszip.min.js"></script>
+    <script src="/static/assets/libs/pdfmake/pdfmake.min.js"></script>
+    <script src="/static/assets/libs/pdfmake/vfs_fonts.js"></script>
+    <script src="/static/assets/js/pages/datatables.init.js"></script>
+</body>
+
+</html>

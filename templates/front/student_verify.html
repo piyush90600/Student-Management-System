@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- ===== CSS ===== -->
+         <link href="/static/assets/myCSS/student_verify.css" rel="stylesheet" type="text/css" />
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Student Verification</title>
+    </head>
+    <body>
+        <div class="width-100 student_verify">
+            <div class="student_verify-content" >
+                <div class="student_verify-box">
+                    <div class="content-left">
+                        <img  src="/static/assets/images/pic/student_back.png">
+                    </div>
+                    <div class="content-right">
+
+                        <form method="post" class="form__content">
+                            {% csrf_token %}
+
+                            {% if messages %}
+
+                                {% for message in messages%}
+
+                                    {% if message.tags == 'success' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: green; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                    {% if message.tags == 'error' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: red; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            {% endif %}
+
+                            <h1 class="form__title">Student Verification</h1>
+
+                            <div class="form__div form__div-one">
+                                <div class="form__icon">
+                                    <i class='bx bx-envelope'></i>
+                                </div>
+
+                                <div class="form__div-input">
+                                    <input type="text"  placeholder="Roll Number" name="roll_no" class="form__input" required>
+                                </div>
+                            </div>
+
+                            <button class="form__button" type="submit" name="button">VERIFY</button>
+                            <a class="form__link" href="/home">Back To Home</a>
+                        </form>
+                        {% if data %}
+                         <h2 style="font-size: 25px;">Student Information</h2>
+                        <p><strong>Roll Number:</strong>&ensp;{{ data.0.roll_no }}</p>
+                        <p><strong>Name:</strong>&ensp;{{ data.0.student_name }}</p>
+                        <p><strong>Date of Birth:</strong>&ensp;{{ data.0.dob }}</p>
+                        <p><strong>Mobile Number:</strong>&ensp;{{ data.0.mob_no }}</p>
+                        <p><strong>Email:</strong>&ensp;{{ data.0.email_id }}</p>
+                        <p><strong>Course:</strong>&ensp;{{ course.0.course_code }}</p>
+                        {% endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

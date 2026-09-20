@@ -1,0 +1,132 @@
+{% extends 'adminPanel/layout.html' %}
+{% block title %}Receive fee{% endblock %}
+
+{% block content %}
+<div class="row">
+        <div class="col-lg-12 mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="header-title">Receive Fee </h4>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                             {% if messages %}
+
+                                {% for message in messages%}
+
+                                    {% if message.tags == 'success' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: green; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                    {% if message.tags == 'error' %}
+                                    <div class="alert alert-warning alert-dismissible fade show" style="width: 100%; padding: 8px; text-align: center; background-color: red; color: white; border-radius: 5px; margin-bottom: 15px" role="alert">
+                                        {{message}}
+                                        <span aria-hidden="true"  onclick="this.parentElement.style.display='none'">&times;</span>
+
+                                    </div>
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            {% endif %}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Roll Number:</label>
+                                    <input type="text" class="form-control" value="{{ list.roll_no }}" name="roll_no" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Student Name:</label>
+                                    <input type="text" class="form-control" value="{{ list.student_name }}" name="student_name"  readonly>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Total Fee:</label>
+                                    <input type="text" class="form-control" value="{{ list.fee }}" name="fee" readonly>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Dues Amount:</label>
+                                    <input type="text" class="form-control" value="{{ list.dues_amount }}" name="dues_amount" readonly>
+                                </div>
+                            </div>
+
+                             <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Payment Date:<span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control"  name="payment_date">
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label >Pay Amount:<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="" name="amount" placeholder="Enter amount" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <a href="/adminPanel/fee" class="btn btn-danger">Back</a>
+                                <button type="submit" class="btn btn-primary px-4">Receive</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div>
+    </div>
+
+<div class="row">
+        <div class="col-lg-12 mt-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="header-title">Fee List</h4>
+                </div><!--end card-header-->
+                <div class="card-body">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Amount</th>
+                            <th>Payment Date</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+
+
+                        <tbody>
+                        {% for data in all_list %}
+                            <tr>
+                                <td>{{ data.id }}</td>
+                                <td>{{ data.amount }}</td>
+                                <td>{{ data.payment_date }}</td>
+
+                                <td>
+                                    <div class="btn-group" aria-label="Basic example" role="group">
+                                        <a href="/adminPanel/delete_fee/{{ data.id }}" class="btn btn-outline-primary">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div>
+    </div>
+{% endblock %}
